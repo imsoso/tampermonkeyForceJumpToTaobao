@@ -1,0 +1,26 @@
+// ==UserScript==
+// @name         闲鱼 to 淘宝 Link Converter
+// @namespace    http://tampermonkey/goofish-to-taobao
+// @version      1.0.0
+// @author       ChatGPT and me
+// @license      MIT
+// @description  Convert Goofish item links to Taobao item links automatically
+// @match        https://h5.m.goofish.com/*
+// @grant        none
+// @icon         https://img.alicdn.com/tps/i3/TB1eW1eGXXXXXXAXFXXBS8UGFXX-41-22.png
+
+// ==/UserScript==
+
+(function() {
+    'use strict';
+
+    const currentUrl = window.location.href; // get the current URL
+    const regex = /https:\/\/h5\.m\.goofish\.com\/item\?id=(\d+)/; // regex pattern to match the Goofish link
+    const match = regex.exec(currentUrl); // search for the Goofish link using regex
+
+    if (match !== null) {
+        const itemId = match[1]; // get the item ID number from the regex match
+        const newUrl = `https://item.taobao.com/item.htm?id=${itemId}`; // create the new Taobao URL
+        window.location.href = newUrl; // redirect to the new Taobao URL
+    }
+})();
