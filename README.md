@@ -1,0 +1,2 @@
+# tampermonkeyForceJumpToTaobao
+强制把闲鱼移动网页跳转到淘宝
